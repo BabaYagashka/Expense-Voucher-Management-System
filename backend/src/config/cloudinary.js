@@ -16,10 +16,11 @@ const uploadOnCloudinary = async (localFilePath) => {
       folder: "expense-voucher-signatures",
     });
 
-    fs.unlinkSync(localFilePath); // remove temp file after successful upload
+    fs.unlinkSync(localFilePath);
     return response;
   } catch (error) {
-    fs.unlinkSync(localFilePath); // remove temp file even if upload failed
+    console.error("CLOUDINARY UPLOAD ERROR:", error);
+    fs.unlinkSync(localFilePath);
     return null;
   }
 };

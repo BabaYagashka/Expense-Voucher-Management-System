@@ -3,10 +3,10 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import authRouter from "./routes/auth.routes.js";
 import { errorHandler } from "./middlewares/error.middleware.js";
+import voucherRouter from "./routes/voucher.routes.js";
 
 const app = express();
 
-app.use(errorHandler);
 app.use(
   cors({
     origin: process.env.CORS_ORIGIN,
@@ -19,5 +19,7 @@ app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));
 app.use(cookieParser());
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/vouchers", voucherRouter);
 
+app.use(errorHandler);
 export default app;
