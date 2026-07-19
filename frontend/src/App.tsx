@@ -7,6 +7,9 @@ import Register from "@/pages/Register";
 import EmployeeDashboard from "@/pages/employee/EmployeeDashboard";
 import CreateVoucher from "@/pages/employee/CreateVoucher";
 import VoucherDetail from "@/pages/employee/VoucherDetail";
+import DirectorDashboard from "@/pages/director/DirectorDashboard";
+import DirectorVoucherDetail from "@/pages/director/DirectorVoucherDetail";
+import AllVouchers from "@/pages/director/AllVouchers";
 
 function App() {
   return (
@@ -31,7 +34,7 @@ function App() {
           element={
             <ProtectedRoute allowedRoles={["director"]}>
               <Layout>
-                <div>Director Dashboard (placeholder)</div>
+                <DirectorDashboard />
               </Layout>
             </ProtectedRoute>
           }
@@ -72,6 +75,26 @@ function App() {
             <ProtectedRoute allowedRoles={["employee"]}>
               <Layout>
                 <VoucherDetail />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/director/vouchers"
+          element={
+            <ProtectedRoute allowedRoles={["director"]}>
+              <Layout>
+                <AllVouchers />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/director/vouchers/:id"
+          element={
+            <ProtectedRoute allowedRoles={["director"]}>
+              <Layout>
+                <DirectorVoucherDetail />
               </Layout>
             </ProtectedRoute>
           }
