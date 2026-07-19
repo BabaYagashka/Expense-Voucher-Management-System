@@ -181,7 +181,7 @@ Internal collection used to atomically generate sequential voucher numbers per y
 ### Director Dashboard
 ![Director dashboard](docs/screenshots/director-dashboard.png)
 
-### Voucher Detail
+### Voucher Detail with search/sort/order/status functionality 
 ![Voucher detail](docs/screenshots/view-all-vouchers.png)
 
 ### Accounts Dashboard
@@ -189,3 +189,6 @@ Internal collection used to atomically generate sequential voucher numbers per y
 
 ### Create a Voucher
 ![Voucher](docs/screenshots/create-voucher.png)
+
+### Voucher Status by Accounts Team
+![Voucher](docs/screenshots/voucher-status.png)
