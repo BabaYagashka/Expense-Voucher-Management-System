@@ -28,7 +28,7 @@ export default function Home() {
         <Navbar />
 
         {/* Hero Section */}
-        <section className="max-w-4xl mx-auto px-4 pt-24 pb-16 text-center">
+        <section className="max-w-4xl mx-auto px-4 pt-10 pb-16 text-center">
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 leading-tight">
             Expense <span className="text-green-700">Vouchers</span>
             <br />
@@ -75,7 +75,7 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-slate-200 bg-white py-5">
+      <footer className="border-t border-gray-500 bg-white py-5">
         <p className="text-center text-xs sm:text-sm text-slate-500 tracking-wide">
           Built for Prachay Securities Pvt. Ltd. — Full Stack Developer
           Internship Assignment

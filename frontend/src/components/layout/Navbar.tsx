@@ -19,12 +19,12 @@ export function Navbar() {
 
   return (
     <nav className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-10">
-      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div className="mx-auto px-4 h-16 flex items-center justify-between">
         <Link
           to={user ? dashboardByRole[user.role] : "/"}
           className="font-semibold text-lg text-slate-900 tracking-tight"
         >
-          Expense<span className="text-primary">Voucher</span>
+          Expense<span className="text-green-800">Voucher</span>
         </Link>
 
         {user ? (
@@ -37,19 +37,19 @@ export function Navbar() {
                 {user.role}
               </p>
             </div>
-            <Button variant="outline" size="sm" onClick={handleLogout}>
+            <Button variant="outline" size="lg" onClick={handleLogout}>
               Logout
             </Button>
           </div>
         ) : (
           <div className="flex items-center gap-2">
             <Link to="/login">
-              <Button variant="ghost" size="sm">
+              <Button variant="ghost" size="lg">
                 Login
               </Button>
             </Link>
             <Link to="/register">
-              <Button size="sm">Register</Button>
+              <Button size="lg">Register</Button>
             </Link>
           </div>
         )}
