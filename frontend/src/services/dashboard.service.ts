@@ -17,6 +17,14 @@ export interface DirectorDashboardData {
   totalPendingAmount: number;
   recentActivity: Voucher[];
 }
+export interface AccountsDashboardData {
+  totalVouchers: number;
+  pendingApproval: number;
+  approvedVouchers: number;
+  rejectedVouchers: number;
+  totalApprovedExpenseAmount: number;
+  recentApprovedVouchers: Voucher[];
+}
 
 export const getEmployeeDashboard = async () => {
   const { data } = await api.get<ApiResponse<EmployeeDashboardData>>(
@@ -28,6 +36,13 @@ export const getEmployeeDashboard = async () => {
 export const getDirectorDashboard = async () => {
   const { data } = await api.get<ApiResponse<DirectorDashboardData>>(
     "/dashboard/director",
+  );
+  return data.data;
+};
+
+export const getAccountsDashboard = async () => {
+  const { data } = await api.get<ApiResponse<AccountsDashboardData>>(
+    "/dashboard/accounts",
   );
   return data.data;
 };
