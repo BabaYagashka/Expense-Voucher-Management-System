@@ -23,48 +23,60 @@ const features = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-slate-50">
-      <Navbar />
+    <div className="min-h-screen bg-slate-50 flex flex-col justify-between">
+      <div>
+        <Navbar />
 
-      <section className="max-w-5xl mx-auto px-4 pt-20 pb-16 text-center">
-        <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight text-slate-900">
-          Expense vouchers,
-          <br />
-          <span className="text-primary">without the paper trail</span>
-        </h1>
-        <p className="mt-5 text-lg text-muted-foreground max-w-xl mx-auto">
-          A simple digital workflow for submitting, approving, and tracking
-          expense vouchers — replacing manual paper forms end to end.
-        </p>
-        <div className="mt-8 flex items-center justify-center gap-3">
-          <Link to="/register">
-            <Button size="lg">Get started</Button>
-          </Link>
-          <Link to="/login">
-            <Button size="lg" variant="outline">
-              Sign in
-            </Button>
-          </Link>
-        </div>
-      </section>
+        {/* Hero Section */}
+        <section className="max-w-4xl mx-auto px-4 pt-24 pb-16 text-center">
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 leading-tight">
+            Expense <span className="text-green-700">Vouchers</span>
+            <br />
+            <span className="text-primary">without the paper trail</span>
+          </h1>
+          <p className="mt-5 text-base sm:text-lg text-slate-600 max-w-xl mx-auto leading-relaxed">
+            A simple digital workflow for submitting, approving, and tracking
+            expense vouchers — replacing manual paper forms end to end.
+          </p>
+          <div className="mt-8 flex items-center justify-center gap-3">
+            <Link to="/register">
+              <Button size="lg" className="px-6">
+                Get started
+              </Button>
+            </Link>
+            <Link to="/login">
+              <Button size="lg" variant="outline" className="bg-white px-6">
+                Sign in
+              </Button>
+            </Link>
+          </div>
+        </section>
 
-      <section className="max-w-5xl mx-auto px-4 pb-24">
-        <div className="grid sm:grid-cols-3 gap-6">
-          {features.map((f) => (
-            <Card key={f.title} className="border-slate-200">
-              <CardHeader>
-                <CardTitle className="text-base">{f.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="text-sm text-muted-foreground">
-                {f.description}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
+        {/* Features Section */}
+        <section className="max-w-5xl mx-auto px-4 pb-24">
+          <div className="grid sm:grid-cols-3 gap-6">
+            {features.map((f) => (
+              <Card
+                key={f.title}
+                className="border-slate-200/80 text-center bg-white shadow-sm hover:border-slate-300 transition-colors duration-200"
+              >
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-base font-semibold text-slate-800">
+                    {f.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="text-sm text-slate-600 leading-relaxed">
+                  {f.description}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+      </div>
 
-      <footer className="border-t py-6">
-        <p className="text-center text-sm text-muted-foreground">
+      {/* Footer */}
+      <footer className="border-t border-slate-200 bg-white py-5">
+        <p className="text-center text-xs sm:text-sm text-slate-500 tracking-wide">
           Built for Prachay Securities Pvt. Ltd. — Full Stack Developer
           Internship Assignment
         </p>
