@@ -5,6 +5,8 @@ import { Layout } from "@/components/layout/Layout";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import EmployeeDashboard from "@/pages/employee/EmployeeDashboard";
+import CreateVoucher from "@/pages/employee/CreateVoucher";
+import VoucherDetail from "@/pages/employee/VoucherDetail";
 
 function App() {
   return (
@@ -52,6 +54,28 @@ function App() {
         />
 
         <Route path="/" element={<Navigate to="/login" replace />} />
+
+        <Route
+          path="/employee/vouchers/new"
+          element={
+            <ProtectedRoute allowedRoles={["employee"]}>
+              <Layout>
+                <CreateVoucher />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/employee/vouchers/:id"
+          element={
+            <ProtectedRoute allowedRoles={["employee"]}>
+              <Layout>
+                <VoucherDetail />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </AuthProvider>
   );
