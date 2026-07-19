@@ -36,6 +36,12 @@ export default function Login() {
       return;
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       const user = await login(email, password);

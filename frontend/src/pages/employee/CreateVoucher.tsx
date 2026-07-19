@@ -40,6 +40,19 @@ export default function CreateVoucher() {
       return;
     }
 
+    if (amountNum > 10000000) {
+      setError("Amount seems unusually large — please double check");
+      return;
+    }
+
+    const selectedDate = new Date(expenseDate);
+    const today = new Date();
+    today.setHours(23, 59, 59, 999);
+    if (selectedDate > today) {
+      setError("Expense date cannot be in the future");
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       const voucher = await createVoucher({
@@ -79,6 +92,7 @@ export default function CreateVoucher() {
                 <Input
                   id="expenseDate"
                   type="date"
+                  max={new Date().toISOString().split("T")[0]}
                   value={expenseDate}
                   onChange={(e) => setExpenseDate(e.target.value)}
                 />

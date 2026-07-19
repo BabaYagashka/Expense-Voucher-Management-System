@@ -41,6 +41,22 @@ export default function Register() {
       return;
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters");
+      return;
+    }
+
+    if (name.trim().length < 2) {
+      setError("Please enter your full name");
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       await registerUser({ name, email, password, role, department });
