@@ -19,6 +19,8 @@ import DirectorVoucherDetail from "@/pages/director/DirectorVoucherDetail";
 import AccountsDashboard from "@/pages/accounts/AccountsDashboard";
 import AccountsAllVouchers from "@/pages/accounts/AccountsAllVouchers";
 
+import AccountsVoucherDetail from "@/pages/accounts/AccountsVoucherDetail";
+
 function App() {
   return (
     <AuthProvider>
@@ -127,7 +129,17 @@ function App() {
             </ProtectedRoute>
           }
         />
-
+        
+        <Route
+          path="/accounts/vouchers/:id"
+          element={
+            <ProtectedRoute allowedRoles={["accounts"]}>
+              <Layout>
+                <AccountsVoucherDetail />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/unauthorized"
           element={<div>You don't have permission to view this page.</div>}
