@@ -17,31 +17,42 @@ export function Navbar() {
     navigate("/login");
   };
 
-  if (!user) return null;
-
   return (
-    <nav className="border-b bg-white">
-      <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
+    <nav className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-10">
+      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link
-          to={dashboardByRole[user.role]}
-          className="font-semibold text-slate-900"
+          to={user ? dashboardByRole[user.role] : "/"}
+          className="font-semibold text-lg text-slate-900 tracking-tight"
         >
-          Expense Voucher System
+          Expense<span className="text-primary">Voucher</span>
         </Link>
 
-        <div className="flex items-center gap-4">
-          <div className="text-sm text-right hidden sm:block">
-            <p className="font-medium text-slate-900 leading-tight">
-              {user.name}
-            </p>
-            <p className="text-muted-foreground capitalize leading-tight">
-              {user.role}
-            </p>
+        {user ? (
+          <div className="flex items-center gap-4">
+            <div className="text-sm text-right hidden sm:block">
+              <p className="font-medium text-slate-900 leading-tight">
+                {user.name}
+              </p>
+              <p className="text-muted-foreground capitalize leading-tight">
+                {user.role}
+              </p>
+            </div>
+            <Button variant="outline" size="sm" onClick={handleLogout}>
+              Logout
+            </Button>
           </div>
-          <Button variant="outline" size="sm" onClick={handleLogout}>
-            Logout
-          </Button>
-        </div>
+        ) : (
+          <div className="flex items-center gap-2">
+            <Link to="/login">
+              <Button variant="ghost" size="sm">
+                Login
+              </Button>
+            </Link>
+            <Link to="/register">
+              <Button size="sm">Register</Button>
+            </Link>
+          </div>
+        )}
       </div>
     </nav>
   );

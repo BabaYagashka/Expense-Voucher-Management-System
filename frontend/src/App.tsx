@@ -1,9 +1,10 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/context/AuthContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { PublicRoute } from "@/components/PublicRoute";
 import { Layout } from "@/components/layout/Layout";
 
+import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 
@@ -22,6 +23,8 @@ function App() {
   return (
     <AuthProvider>
       <Routes>
+        <Route path="/" element={<Home />} />
+
         <Route
           path="/login"
           element={
@@ -129,8 +132,6 @@ function App() {
           path="/unauthorized"
           element={<div>You don't have permission to view this page.</div>}
         />
-
-        <Route path="/" element={<Navigate to="/login" replace />} />
       </Routes>
     </AuthProvider>
   );
