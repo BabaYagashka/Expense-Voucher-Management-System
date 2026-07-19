@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "@/context/AuthContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
+import { Layout } from "@/components/layout/Layout";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 
@@ -15,7 +16,9 @@ function App() {
           path="/employee/dashboard"
           element={
             <ProtectedRoute allowedRoles={["employee"]}>
-              <div>Employee Dashboard (placeholder)</div>
+              <Layout>
+                <div>Employee Dashboard (placeholder)</div>
+              </Layout>
             </ProtectedRoute>
           }
         />
@@ -24,7 +27,9 @@ function App() {
           path="/director/dashboard"
           element={
             <ProtectedRoute allowedRoles={["director"]}>
-              <div>Director Dashboard (placeholder)</div>
+              <Layout>
+                <div>Director Dashboard (placeholder)</div>
+              </Layout>
             </ProtectedRoute>
           }
         />
@@ -33,7 +38,9 @@ function App() {
           path="/accounts/dashboard"
           element={
             <ProtectedRoute allowedRoles={["accounts"]}>
-              <div>Accounts Dashboard (placeholder)</div>
+              <Layout>
+                <div>Accounts Dashboard (placeholder)</div>
+              </Layout>
             </ProtectedRoute>
           }
         />
