@@ -34,7 +34,7 @@ export function Navbar() {
                 {user.name}
               </p>
               <p className="text-muted-foreground capitalize leading-tight">
-                {user.role}
+                Role: {user.role}
               </p>
             </div>
             <Button variant="outline" size="lg" onClick={handleLogout}>

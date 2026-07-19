@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Navbar } from "@/components/layout/Navbar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Footer from "@/components/layout/Footer";
 
 const features = [
   {
@@ -32,7 +33,7 @@ export default function Home() {
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 leading-tight">
             Expense <span className="text-green-700">Vouchers</span>
             <br />
-            <span className="text-primary">without the paper trail</span>
+            <span className="text-primary">without the paper trail.</span>
           </h1>
           <p className="mt-5 text-base sm:text-lg text-slate-600 max-w-xl mx-auto leading-relaxed">
             A simple digital workflow for submitting, approving, and tracking
@@ -74,13 +75,7 @@ export default function Home() {
         </section>
       </div>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-500 bg-white py-5">
-        <p className="text-center text-xs sm:text-sm text-slate-500 tracking-wide">
-          Built for Prachay Securities Pvt. Ltd. — Full Stack Developer
-          Internship Assignment
-        </p>
-      </footer>
+      <Footer/>
     </div>
   );
 }
