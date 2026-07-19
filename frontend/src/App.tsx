@@ -4,6 +4,7 @@ import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { Layout } from "@/components/layout/Layout";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
+import EmployeeDashboard from "@/pages/employee/EmployeeDashboard";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           element={
             <ProtectedRoute allowedRoles={["employee"]}>
               <Layout>
-                <div>Employee Dashboard (placeholder)</div>
+                <EmployeeDashboard />
               </Layout>
             </ProtectedRoute>
           }
