@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { registerUser } from "@/services/auth.service";
+import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -22,6 +23,12 @@ import type { UserRole } from "@/types";
 import { Navbar } from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
+const dashboardByRole: Record<string, string> = {
+  employee: "/employee/dashboard",
+  director: "/director/dashboard",
+  accounts: "/accounts/dashboard",
+};
+
 export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -29,9 +36,9 @@ export default function Register() {
   const [role, setRole] = useState<UserRole | "">("");
   const [department, setDepartment] = useState("");
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -62,8 +69,8 @@ export default function Register() {
     setIsSubmitting(true);
     try {
       await registerUser({ name, email, password, role, department });
-      setSuccess(true);
-      setTimeout(() => navigate("/login"), 1500);
+      const user = await login(email, password);
+      navigate(dashboardByRole[user.role] || "/");
     } catch (err: any) {
       setError(
         err?.response?.data?.message ||
@@ -194,12 +201,6 @@ export default function Register() {
                   {error && (
                     <p className="text-xs font-medium text-red-600 bg-red-50 border border-red-100 px-3 py-2 rounded-md">
                       {error}
-                    </p>
-                  )}
-
-                  {success && (
-                    <p className="text-xs font-medium text-green-700 bg-green-50 border border-green-100 px-3 py-2 rounded-md">
-                      Account created! Redirecting to login...
                     </p>
                   )}
 
