@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import {
   getVoucherById,
   approveVoucher,
@@ -31,7 +31,6 @@ const statusLabel: Record<string, string> = {
 
 export default function DirectorVoucherDetail() {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
 
   const [voucher, setVoucher] = useState<Voucher | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -260,4 +259,3 @@ export default function DirectorVoucherDetail() {
     </div>
   );
 }
-    
