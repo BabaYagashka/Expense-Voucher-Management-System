@@ -81,7 +81,7 @@ Registration is open — select your role when creating an account.
 | password | String | required, bcrypt hashed |
 | role | String | enum: employee / director / accounts |
 | employeeId | String | optional |
-| department | String | |
+| department | String | optional |
 | refreshToken | String | set on login |
 
 ### Voucher
